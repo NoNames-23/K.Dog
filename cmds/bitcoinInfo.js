@@ -57,6 +57,10 @@ module.exports.run = async (bot, message, args) => {
 				message.channel.send({embed: embeb});
 			});
 		}
+
+		if(args[0] === "help") {
+			message.channel.send(".bitcoin <info | coinbase>");
+		}
 	}
 }
 
