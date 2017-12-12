@@ -17,6 +17,9 @@ module.exports.run = async (bot, message, args) => {
 	if(args[0] === "info") {
 		sf.get("https://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001?key=" + process.env.steamAPI + "&vanityurl=" + args[1]).then(r => {
 			let body = r.body;
+
+			if(body.response.success !== 1) return message.channel.send("Id Not Found!");
+			
 			let dataUser;
 			let steamLvl;
 			let userStatus;
