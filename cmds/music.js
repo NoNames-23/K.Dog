@@ -112,6 +112,7 @@ function playMusic(id, message) {
 				guilds[message.guild.id].queue = [];
 				guilds[message.guild.id].queueNames = [];
 				guilds[message.guild.id].isPlaying = false;
+				guilds[message.guild.id].voiceChannel.leave();
 			} else {
 				setTimeout(function() {
 					playMusic(guilds[message.guild.id].queue[0], message);
