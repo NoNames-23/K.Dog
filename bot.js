@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const fs = require("fs");
 const mysql = require("mysql");
 
-const bot = new Discord.Client({disableEveryone: true});
+const bot = new Discord.Client({disableEveryone: false});
 const botSettings = require('./botSetting.json');
 const prefix = botSettings.prefix;
 
