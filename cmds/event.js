@@ -68,6 +68,11 @@ module.exports.run = async (bot, message, args, con) => {
 		let roles = message.guild.roles.filter(r => r.name.includes("Event"));
 		message.channel.send('```' + roles.map(r => r.name).join("\n") + '```');
 	}
+
+	if(args[0] === "users") {
+		let users = message.guild.roles.find(r => r.name === message.author.discriminator + " Event").members.map(m => m.user.id);
+		message.channel.send('```Total: ' + users.length + '\n' + users.join("\n") + '```');
+	}
 }
 
 module.exports.help = {
