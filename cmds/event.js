@@ -47,11 +47,11 @@ module.exports.run = async (bot, message, args, con) => {
 	if(args[0] === "join") {
 		if(args[1]) {
 			let role = message.guild.roles.find(r => r.name === args[1] + " Event");
-			if(role) {
+			if(role && !message.member.roles.find(r => r.name === args[1] + " Event") {
 				message.guild.members.get(message.author.id).addRole(role);
 				message.reply("Join " + args[1] + " Event");
 			} else {
-				message.channel.send("Nomor " + args[1] + " Event Tidak Terdaftar!");
+				message.channel.send("Event Tidak Terdaftar Atau Anda Sudah Terdaftar!");
 			}
 		} else {
 			message.channel.send("Tolong Coy, Nomor Event na Di Masukin!");
@@ -59,9 +59,16 @@ module.exports.run = async (bot, message, args, con) => {
 	}
 
 	if(args[0] === "roll") {
-		let users = message.guild.roles.find(r => r.name === message.author.discriminator + " Event").members.map(m => m.user.id);
-		let random = Math.floor((Math.random() * users.length));
-		message.channel.send("Selamat Kepada <@" + users[random] + ">, Pemenang " + message.author.discriminator + " Event!");
+		con.query(`SELECT * FROM author WHERE user_id = '${message.author.id}'`, (err, rows) => {
+			if(err) throw err;
+
+			if(rows.length) {
+				let users = message.guild.roles.find(r => r.name === message.author.discriminator + " Event").members.map(m => m.user.id);
+				let random = Math.floor((Math.random() * users.length));
+
+				message.channel.send(`@everyone, Pemenang ` + message.author.discriminator + " Event ~^<@" + users[random] + ">^~");
+			}
+		});
 	}
 
 	if(args[0] === "list") {
