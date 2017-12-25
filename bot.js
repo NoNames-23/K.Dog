@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const fs = require("fs");
+const mysql = require("mysql");
 
 const bot = new Discord.Client({disableEveryone: true});
 const botSettings = require('./botSetting.json');
@@ -22,7 +23,19 @@ fs.readdir("./cmds/", (err, files) => {
 		console.log(`${i + 1}: ${f} Loaded!`);
 		bot.commands.set(props.help.name, props);
 	})
-})
+});
+
+var con = mysql.createConnection({
+	host: process.env.dbHost,
+	user: process.env.dbUser,
+	password: process.env.dbPass,
+	database: process.env.db
+});
+
+con.connect(err => {
+	if(err) throw err;
+	console.log("Database Connected!");
+});
 
 bot.on('ready', async () => {
     console.log(`Bot Is Ready! ${bot.user.username}`);

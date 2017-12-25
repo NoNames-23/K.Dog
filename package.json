@@ -14,6 +14,7 @@
     "ffmpeg-binaries": "^3.2.2-3",
     "get-youtube-id": "^1.0.0",
     "moment": "^2.19.3",
+    "mysql": "^2.15.0",
     "opusscript": "0.0.4",
     "request": "^2.83.0",
     "youtube-info": "^1.1.2",
