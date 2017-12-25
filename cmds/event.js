@@ -49,7 +49,7 @@ module.exports.run = async (bot, message, args, con) => {
 			let role = message.guild.roles.find(r => r.name === args[1] + " Event");
 			if(role) {
 				message.guild.members.get(message.author.id).addRole(role);
-				message.replay("Join " + args[1] + " Event");
+				message.reply("Join " + args[1] + " Event");
 			} else {
 				message.channel.send("Nomor " + args[1] + " Event Tidak Terdaftar!");
 			}
