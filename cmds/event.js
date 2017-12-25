@@ -47,7 +47,7 @@ module.exports.run = async (bot, message, args, con) => {
 	if(args[0] === "join") {
 		if(args[1]) {
 			let role = message.guild.roles.find(r => r.name === args[1] + " Event");
-			if(role && !message.member.roles.find(r => r.name === args[1] + " Event") {
+			if(role && !message.member.roles.find(r => r.name === args[1] + " Event")) {
 				message.guild.members.get(message.author.id).addRole(role);
 				message.reply("Join " + args[1] + " Event");
 			} else {
