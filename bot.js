@@ -43,7 +43,7 @@ function mysqlService() {
 		console.log("Database Connected!");
 	});
 
-	connection.on('error', function(err) {
+	con.on('error', function(err) {
 		console.log('db error', err);
 		if(err.code === 'PROTOCOL_CONNECTION_LOST') {
 			handleDisconnect();
