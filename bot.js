@@ -38,7 +38,7 @@ function mysqlService() {
 	con.connect(err => {
 		if(err) {
 			console.log('Error When Connecting To DB:', err);
-			setTimeout(handleDisconnect, 2000);
+			setTimeout(mysqlService(), 2000);
 		}
 		console.log("Database Connected!");
 	});
@@ -46,7 +46,7 @@ function mysqlService() {
 	con.on('error', function(err) {
 		console.log('db error', err);
 		if(err.code === 'PROTOCOL_CONNECTION_LOST') {
-			handleDisconnect();
+			mysqlService();
 		} else {
 			throw err;
 		}
