@@ -1,4 +1,4 @@
-module.exports.run = async (bot, message, args, con) => {
+/*module.exports.run = async (bot, message, args, con) => {
 	let sql;
 
 	if(args[0] === "register") {
@@ -84,4 +84,4 @@ module.exports.run = async (bot, message, args, con) => {
 
 module.exports.help = {
 	name: "event"
-}
+}*/
