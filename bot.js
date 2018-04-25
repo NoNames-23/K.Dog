@@ -53,7 +53,7 @@ function mysqlService() {
 	});
 }
 
-mysqlService();
+//mysqlService();
 
 
 bot.on('ready', async () => {
