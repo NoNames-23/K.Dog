@@ -80,8 +80,8 @@
 		let users = message.guild.roles.find(r => r.name === message.author.discriminator + " Event").members.map(m => m.user.id);
 		message.channel.send('```Total: ' + users.length + '\n' + users.join("\n") + '```');
 	}
-}
+}*/
 
 module.exports.help = {
 	name: "event"
-}*/
+}
